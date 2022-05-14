@@ -78,6 +78,8 @@ tasks:
         - protoc --proto_path=. --proto_path=$GOPATH/src/googleapis --proto_path=$GOPATH/src/github.com/gogo/protobuf --go-grpc_out=./pkg/api --go-grpc_opt=module=github.com/bhojpur/scf/pkg/api pkg/api/v1/consignment/consignment.proto
         - protoc --proto_path=. --proto_path=$GOPATH/src/googleapis --proto_path=$GOPATH/src/github.com/gogo/protobuf --go_out=./pkg/api --go_opt=module=github.com/bhojpur/scf/pkg/api pkg/api/v1/vessel/vessel.proto
         - protoc --proto_path=. --proto_path=$GOPATH/src/googleapis --proto_path=$GOPATH/src/github.com/gogo/protobuf --go-grpc_out=./pkg/api --go-grpc_opt=module=github.com/bhojpur/scf/pkg/api pkg/api/v1/vessel/vessel.proto
+        - protoc --proto_path=. --proto_path=$GOPATH/src/googleapis --proto_path=$GOPATH/src/github.com/gogo/protobuf --go_out=./pkg/api --go_opt=module=github.com/bhojpur/scf/pkg/api pkg/api/v1/quote/freight_quoter.proto
+        - protoc --proto_path=. --proto_path=$GOPATH/src/googleapis --proto_path=$GOPATH/src/github.com/gogo/protobuf --go-grpc_out=./pkg/api --go-grpc_opt=module=github.com/bhojpur/scf/pkg/api pkg/api/v1/quote/freight_quoter.proto
 
     test:
         desc: Execute all the Unit Tests

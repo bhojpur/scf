@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+// Copyright (c) 2018 Bhojpur Consulting Private Limited, India. All rights reserved.
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+package v1.quote;
+
+option go_package = "github.com/bhojpur/scf/pkg/api/v1/quote;quote";
+
+message Item {
+  uint64 quantity = 1;
+  float price = 2;
+  uint64 width = 3;
+  uint64 height = 4;
+  uint64 length = 5;
+}
+
+message ToPackage {
+  repeated Item items = 1;
+}
+
+message Package {
+  uint64 quantity = 1;
+  float price = 2;
+  float volume = 3;
+}
+
+message Quotation {
+  Package package = 1;
+  string zipCode = 2;
+}
+
+message Delivery {
+  uint64 time = 1;
+  float price = 2;
+}
+
+service FreightQuoter {
+  rpc MountPackage(ToPackage) returns (Package) {}
+  rpc Quote(Quotation) returns (Delivery) {}
+}
